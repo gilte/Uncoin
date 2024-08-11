@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Chaves Hexadecimais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        button {
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gerador de Chaves Hexadecimais</h1>
+    <label for="numKeys">Número de Chaves:</label>
+    <input type="number" id="numKeys" min="1" value="1">
+    <button onclick="generateKeys()">Gerar Chaves</button>
+
+    <div id="output"></div>
+
+    <script>
+        function generateRandomHex(length) {
+            let result = '';
+            const characters = '0123456789abcdef';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        function padLeft(str, length, padChar) {
+            return padChar.repeat(Math.max(0, length - str.length)) + str;
+        }
+
+        function generateKeys() {
+            const numKeys = parseInt(document.getElementById('numKeys').value, 10);
+            const output = document.getElementById('output');
+            output.innerHTML = '';
+
+            for (let i = 0; i < numKeys; i++) {
+                const key = generateRandomHex(4); // Gera uma chave com 18 caracteres hexadecimais
+                const paddedKey = padLeft(key, 4, '0'); // Garante que a chave tenha 18 caracteres com zeros à esquerda
+                const div = document.createElement('div');
+                div.innerText = paddedKey;
+                output.appendChild(div);
+            }
+        }
+    </script>
+
+</body>
+</html>
