@@ -51,8 +51,8 @@
             output.innerHTML = '';
 
             for (let i = 0; i < numKeys; i++) {
-                const key = generateRandomHex(20); // Gera uma chave com 18 caracteres hexadecimais
-                const paddedKey = padLeft(key, 20, '0'); // Garante que a chave tenha 18 caracteres com zeros à esquerda
+                const key = generateRandomHex(64); // Gera uma chave com 18 caracteres hexadecimais
+                const paddedKey = padLeft(key, 64, '0'); // Garante que a chave tenha 18 caracteres com zeros à esquerda
                 const div = document.createElement('div');
                 div.innerText = paddedKey;
                 output.appendChild(div);
